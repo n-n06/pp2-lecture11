@@ -1,4 +1,9 @@
 # Mouse events
+![alt text](mouse.jpg)
+
+
+
+
 ## Keyboard events
 You already know how to access keyboard events. There are 2 main methods:
 - Event queue
@@ -114,12 +119,36 @@ When, for example, a mouse button down event is activated, it is activated only 
 
 To solve this, we can use pygame's `mouse` module. In particular, the `get_pressed()` function.  
 This function return a tuple of the type: `(True,False,False)` where True corresponds to a mouse button being pressed and False - to not being pressed.
+> `get_pressed()`
 ```python
 ...
 while True:
     ...
     pressed = pygame.mouse.get_pressed()
     if pressed[0]:
-        print("Pressed button : 1")
+        print("Pressed button: 1")
 ...
 ```
+
+There are other thing we can do using this module. For example, we can make the default cursor invinsible
+> `set_visible(False)`
+
+We can also customize the cursor by creating our own:
+```python
+pygame.mouse.set_visible(False)
+...
+while True:
+    ...
+    pos = pygame.mouse.get_pos()
+    if pygame.mouse.get_focused() #checks if the cursor is inside of the client zone
+        pygame.draw.circle(screen, blue, pos, 7)
+
+    pressed = pygame.mouse.get_pressed()
+    if pressed[0]:
+        
+
+```
+In this example, we made a blue circular cursor with radius 7 and we drew it on the position of the default cursor that we made invinsible by using `pygame.mouse.set_visible(False)` before the main loop
+
+
+## This is basically everything that I wanted to tell you. Thanks for attention!
